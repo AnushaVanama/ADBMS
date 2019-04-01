@@ -1,3 +1,10 @@
+<?php session_start();
+//$cookie_name="user";
+setcookie("user_id",$_SESSION["userid"],time()+(60*60*24*30), "/");
+setcookie("username",$_SESSION["useName"],time()+(60*60*24*30),"/");
+//echo $_COOKIE["userid"];
+?>
+
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Load an icon library -->
@@ -64,9 +71,10 @@ src="..\Images\Logo.png" alt="HTML5 Icon" style="width:auto;height:75px;">
 </center>
 </div>
 <div class="navbar">
+   <a style="text-decoration:underline" href="index.html">Log Out</a>
    <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
-   <a href="#"><i class="fa fa-fw fa-user"></i> Login</a>
-   <a class="active" href="#"><i class="fa fa-fw fa-home"></i> Home</a>
+   <a class="active" href="loginindex.php"><i class="fa fa-fw fa-home"></i>Home</a>
+   <a href="#">Welcome <?php echo $_SESSION["useName"]?></a>
 </div>
 <br></br>
 <center>
@@ -122,3 +130,7 @@ src="..\Images\Logo.png" alt="HTML5 Icon" style="width:auto;height:75px;">
 </div>
 </body>
 </html> 
+
+    
+</body>
+</html>
