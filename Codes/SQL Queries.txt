@@ -1,5 +1,19 @@
 create table login(user_id int NOT NULL AUTO_INCREMENT,
                       username varchar(10),
-					  password varchar(12),
+					  Password varchar(50),
 					  email varchar(20),
 					  primary key(user_id));
+					  
+create table signup(FirstName varchar(25) NOT NULL,
+                    LastName varchar(25) NOT NULL,
+					DOB varchar(20) NOT NULL,
+					SSN varchar(20) NOT NULL,
+					email varchar(50) NOT NULL,
+					Password varchar(50) NOT NULL,
+					Role varchar(10) NOT NULL,
+                    username varchar(20) NOT NULL);
+
+					  
+create table CarInformation(vehicle_id int NOT NULL, 
+                            name varchar(25) NOT NULL,
+							model_year 
