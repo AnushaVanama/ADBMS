@@ -1,18 +1,9 @@
-<?php
-session_start();
-setcookie("userid",NULL,time()-3600,"/");
-//$_SESSION["userid"]=0;
-unset($_SESSION["userid"]);
-unset($_SESSION["useName"]);
-unset($_SESSION["eml"]);
-?>
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Load an icon library -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
-
 .navbar {
   width: 100%;
   background-color: #216;
@@ -20,7 +11,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
   position: relative;
  
  }
-
 .navbar a {
   float: right;
   padding: 10px;
@@ -28,22 +18,18 @@ body {font-family: Arial, Helvetica, sans-serif;}
   text-decoration: none;
   font-size: 17px;
 }
-
 .navbar a:hover {
   background-color: #225;
 }
-
 .active {
   background-color: #216;
 }
-
 @media only screen and (max-width: 1044px) {
   .navbar a {
     float: none;
     display: block;
   }
 }
-
 .dealer-logo{
     text-align: Left;
 	background-color: transparent;
@@ -51,17 +37,14 @@ body {font-family: Arial, Helvetica, sans-serif;}
 	padding: 1px;
   
 }
-
 .SearchBar {     
      top: 355px;
      left: 575px;
 }
-
 .SearchBar {
      height: 30px;
      width: 500px;
 }
-
 </style>
 <body>
 <div class="dealer-logo">
@@ -73,7 +56,7 @@ src="..\Images\Logo.png" alt="HTML5 Icon" style="width:auto;height:75px;">
 </div>
 <div class="navbar">
    <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
-   <a href="login and register.php"><i class="fa fa-fw fa-user"></i> Login</a>
+   <a href="login.php"><i class="fa fa-fw fa-user"></i> Login</a>
    <a class="active" href="#"><i class="fa fa-fw fa-home"></i> Home</a>
 </div>
 <br></br>

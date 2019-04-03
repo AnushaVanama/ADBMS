@@ -1,8 +1,14 @@
-<?php session_start();
-//$cookie_name="user";
-setcookie("user_id",$_SESSION["userid"],time()+(60*60*24*30), "/");
-setcookie("username",$_SESSION["useName"],time()+(60*60*24*30),"/");
-//echo $_COOKIE["userid"];
+<?php 
+  session_start(); 
+  if (!isset($_SESSION['username'])) {
+  	$_SESSION['msg'] = "You must log in first";
+  	header('location: login.php');
+  }
+  if (isset($_GET['logout'])) {
+  	session_destroy();
+  	unset($_SESSION['username']);
+  	header("location: login.php");
+  }
 ?>
 
 <html>
@@ -71,10 +77,12 @@ src="..\Images\Logo.png" alt="HTML5 Icon" style="width:auto;height:75px;">
 </center>
 </div>
 <div class="navbar">
-   <a style="text-decoration:underline" href="index.html">Log Out</a>
+   <a style="text-decoration:underline" href="index.php">Log Out</a>
    <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
    <a class="active" href="loginindex.php"><i class="fa fa-fw fa-home"></i>Home</a>
-   <a href="#">Welcome <?php echo $_SESSION["useName"]?></a>
+   <a href="#">Welcome <?php  if (isset($_SESSION['username'])) : ?>
+    '<?php echo $_SESSION['username']; ?>'
+    <?php endif ?></a>
 </div>
 <br></br>
 <center>
