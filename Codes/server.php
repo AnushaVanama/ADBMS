@@ -12,7 +12,7 @@ $errors = array();
 $db = mysqli_connect('localhost', 'root', '', 'cardealership');
 // Check connection
 if ($db->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die("Connection failed: " . $db->connect_error);
 }
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
