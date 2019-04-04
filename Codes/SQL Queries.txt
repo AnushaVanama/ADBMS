@@ -14,6 +14,13 @@ create table signup(FirstName varchar(25) NOT NULL,
                     username varchar(20) NOT NULL);
 
 					  
-create table CarInformation(vehicle_id int NOT NULL, 
-                            name varchar(25) NOT NULL,
-							model_year 
+create table CarInformation(vehicle_id bigint NOT NULL,
+							make varchar(25) NOT NULL,
+							model varchar(25) NOT NULL,
+							year int(4) NOT NULL,
+							color varchar(25) NOT NULL,
+							price bigint NOT NULL,
+							yearaddedtoinventory int(4) NOT NULL,
+							type varchar(4) NOT NULL,
+							mileage bigint NOT NULL);
+							
