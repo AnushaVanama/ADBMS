@@ -87,7 +87,7 @@ src="..\Images\Logo.png" alt="HTML5 Icon" style="width:auto;height:75px;">
 <br></br>
 <center>
 <div class="SearchBar">
-<form>
+<form action="searchbar.php" method="get">
 	<input type="text" name="searchterms" placeholder="Enter your vehicle ID to search" size="35" required>
 	<input type="submit" value="Search">
 </div>	
@@ -113,9 +113,11 @@ src="..\Images\Logo.png" alt="HTML5 Icon" style="width:auto;height:75px;">
 	</select>
 	<select name="pricerange" required>
   	<option>Select Price Range</option>
-	<option value="15000">15K - 20K</option>
-	<option value="20000">20K - 25K</option>
-  	<option value="25000">25K - 30K</option>
+	<option value="0">Less than 15K</option>
+	<option value="1">15K - 20K</option>
+	<option value="2">20K - 25K</option>
+  	<option value="3">25K - 30K</option>
+	<option value="4">Above 30K</option>
 	</select>
 	<select name="color" required>
   	<option>Select Color</option>
@@ -124,7 +126,7 @@ src="..\Images\Logo.png" alt="HTML5 Icon" style="width:auto;height:75px;">
   	<option value="white">White</option>
 	</select>
 	<input type="submit" value="Search"><br/>
-</form>
+	</form>
 </center>
 <br><br>
 <div class="dealer-logo">
