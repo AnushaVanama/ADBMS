@@ -62,7 +62,6 @@ src="..\Images\Logo.png" alt="HTML5 Icon" style="width:auto;height:75px;">
 </center>
 </div>
 <div class="navbar">
-   <a class="active" href="loginindex.php"><i class="fa fa-fw fa-home"></i>Home</a>
 </div>
 </html>
 <?php
@@ -84,6 +83,15 @@ $connection = mysqli_connect($servername, $username, $password, $dbname) or die(
 			   $model = $_POST['model'];
 			   $price = $_POST['pricerange'];
 			   $color = $_POST['color'];
+			   
+			   $query_condition = "";
+			   if($condition != "cond") { $query_condition = " type =" . "'$condition'"; }
+			   if($make != "mk") { $query_condition = $query_condition . " and make =" . "'$make'"; }
+			   if($model != "mdl") { $query_condition = $query_condition . " and model =" . "'$model'"; }
+			   if($color != "clr") { $query_condition = $query_condition . " and color =" . "'$color'"; }
+			    
+			//echo $query_condition;
+			   
 			   $lowval = 0;
 			   $highval = 30000;
 			   switch($price)
@@ -109,12 +117,15 @@ $connection = mysqli_connect($servername, $username, $password, $dbname) or die(
 						$highval = 500000;
 						break;
 			   }
-               $sql = "SELECT * FROM CarInformation WHERE make = '$make' and
-														  model = '$model' and
-														  color = '$color' and
-														  price >= '$lowval' and
-														  price <= '$highval' and
-               											  type = '$condition';";
+			   if($price != "pr") { $query_condition = $query_condition . " and price >=" . "'$lowval'" . " and price <=" . "'$highval'"; }
+			   
+			   $arr = explode(' ',trim($query_condition));
+			   if($arr[0] == 'and')
+			   {
+				   $query_condition = substr(strstr($query_condition," "),5);
+			   }
+			   if($query_condition == "") $sql = "SELECT * FROM CarInformation;";
+			   else $sql = "SELECT * FROM CarInformation WHERE". " $query_condition;";
                $res = mysqli_query($connection, $sql) or die("Query Failed: $sql");
                if ($res->num_rows > 0)
                {
