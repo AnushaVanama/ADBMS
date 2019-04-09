@@ -69,39 +69,40 @@ src="..\Images\Logo.png" alt="HTML5 Icon" style="width:auto;height:75px;">
 </form>
 <br>
 <form action="categorysearch.php" method="post">
-	<select name="condition" required>
-  	<option>New/Used</option>
+	<select name="condition">
+  	<option value = "cond">New/Used</option>
   	<option value="new">New</option>
  	<option value="used">Used</option>
     </select>
-	<select name="make" required>
-  	<option>Select Make</option>
+	<select name="make" >
+  	<option value = "mk">Select Make</option>
   	<option value="honda">Honda</option>
  	<option value="toyota">Toyota</option>
 	</select>
-	<select name="model" required>
-  	<option>Select Model</option>
+	<select name="model" >
+  	<option value = "mdl">Select Model</option>
 	<option value="camry">Toyota Camry</option>
 	<option value="corolla">Toyota Corolla</option>
   	<option value="civic">Honda Civic</option>
 	<option value="accord">Honda Accord</option>
 	</select>
-	<select name="pricerange" required>
-  	<option>Select Price Range</option>
+	<select name="pricerange" >
+  	<option value = "pr">Select Price Range</option>
 	<option value="0">Less than 15K</option>
 	<option value="1">15K - 20K</option>
 	<option value="2">20K - 25K</option>
   	<option value="3">25K - 30K</option>
 	<option value="4">Above 30K</option>
 	</select>
-	<select name="color" required>
-  	<option>Select Color</option>
+	<select name="color" >
+  	<option value = "clr">Select Color</option>
 	<option value="blue">Blue</option>
 	<option value="red">Red</option>
   	<option value="white">White</option>
 	</select>
-	<input type="submit" value="Search"><br/>
+	<input type="submit" value="Search">
 </form>
+<br/>
 </center>
 <br><br>
 <div class="dealer-logo">

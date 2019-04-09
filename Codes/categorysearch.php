@@ -19,11 +19,12 @@ body {font-family: Arial, Helvetica, sans-serif;}
  
  }
 .navbar a {
-  float: right;
+  float: left;
   padding: 10px;
   color: white;
   text-decoration: none;
   font-size: 17px;
+  text-align: left;
 }
 .navbar a:hover {
   background-color: #225;
@@ -62,7 +63,9 @@ src="..\Images\Logo.png" alt="HTML5 Icon" style="width:auto;height:75px;">
 </center>
 </div>
 <div class="navbar">
+ <a class="active" href="#">Your Search Results</a>
 </div>
+
 </html>
 <?php
 
