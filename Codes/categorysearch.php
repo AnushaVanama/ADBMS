@@ -62,7 +62,7 @@ src="..\Images\Logo.png" alt="HTML5 Icon" style="width:auto;height:75px;">
 </center>
 </div>
 <div class="navbar">
-   <a class="active" href="index.php"><i class="fa fa-fw fa-home"></i>Home</a>
+   <a class="active" href="loginindex.php"><i class="fa fa-fw fa-home"></i>Home</a>
 </div>
 </html>
 <?php
@@ -118,16 +118,42 @@ $connection = mysqli_connect($servername, $username, $password, $dbname) or die(
                $res = mysqli_query($connection, $sql) or die("Query Failed: $sql");
                if ($res->num_rows > 0)
                {
-               echo "Results: ";
-               echo "<table><tr><th>vehicle_id</th><th>make</th><th>model</th><th>year</th><th>color</th><th>price</th><th>yearaddedtoinventory</th>
-			   <th>type</th><th>mileage</th>
-			   </tr>";
+               echo "<center><h2>Results: </center></h2>";
+			   echo "<center>";
+			   echo "<table>";
                while ($row = mysqli_fetch_assoc($res))
                {
-               echo "<tr><td>" . $row["vehicle_id"] . "</td><td>" . $row["make"] . "</td><td>" . $row["model"] . "</td><td>" . $row["year"] . "</td><td>" . $row["color"] . "</td><td>" . $row["price"] . "</td><td>" . $row["yearaddedtoinventory"] . "</td><td>" . $row["type"] . "</td><td>" . $row["mileage"] . "</td></tr>";
+               echo "<td>" . "Vehicle id: " . $row["vehicle_id"] . "<br>" . 
+							 "Make: " . $row["make"] . "<br>" . 
+							 "Model: " . $row["model"] . "<br>" . 
+							 "Year: " . $row["year"] . "<br>" . 
+							 "Color: " . $row["color"] . "<br>" .
+							 "Price: " . $row["price"] . "<br>" . 
+							 "Year added to Inventory: " . $row["yearaddedtoinventory"]. "   ". "<br>" . 
+							 "Type: " . $row["type"] . "<br>" . 
+							 "Mileage: " . $row["mileage"] . "</td>" .
+							 "<td>";
+							 switch($row["model"])
+							 {
+				   case "camry":
+					    echo "<img src=\"..\Images\camry.jpg\" alt=\"HTML5 Icon\" style=\"width:auto;height:175px;\">";
+						break;
+				   case "civic":
+						echo "<img src=\"..\Images\civic.jpg\" alt=\"HTML5 Icon\" style=\"width:auto;height:175px;\">" ;
+						break;
+				   case "accord":
+				        echo "<img src=\"..\Images\accord.jpg\" alt=\"HTML5 Icon\" style=\"width:auto;height:175px;\">" ;
+						break;
+				   case "corolla":
+				        echo "<img src=\"..\Images\corolla.jpg\" alt=\"HTML5 Icon\" style=\"width:auto;height:175px;\">" ;
+						break;
+				   }
+
+			echo "</td>";
                }
                
                echo "</table>";
+			   echo "</center>";
                }
                else
                {
