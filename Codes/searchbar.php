@@ -65,17 +65,14 @@ src="..\Images\Logo.png" alt="HTML5 Icon" style="width:auto;height:75px;">
 <div class="navbar">
    <a class="active" href="loginindex.php"><i class="fa fa-fw fa-home"></i>Home</a>
 </div>
-</html>
+  </html>
 <?php
-
 session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "cardealership";
-
 // Create connection
-
 $connection = mysqli_connect($servername, $username, $password, $dbname) or die("Connection failed");
 	   
                if (isset($_GET['searchterms']))
@@ -99,7 +96,14 @@ $connection = mysqli_connect($servername, $username, $password, $dbname) or die(
 							 "Price: " . $row["price"] . "<br>" . 
 							 "Year added to Inventory: " . $row["yearaddedtoinventory"]. "   ". "<br>" . 
 							 "Type: " . $row["type"] . "<br>" . 
-							 "Mileage: " . $row["mileage"] . "</td>" .
+							 "Mileage: " . $row["mileage"] . "<br>" .
+							 "Engine: " . $row["engine"] . "<br>" . 
+							 "Transmission: " . $row["transmission"] . "<br>" .
+							 "Incentives: " . $row["incentives"] . "<br>" .
+							 "Interest Rate: " . $row["interestrate"] . "<br>" .
+							 "Down Payment: " . $row["downpayment"] . "<br>" .
+							 "</td>" .
+							 
 							 "<td>";
 							 switch($row["model"])
 							 {
@@ -117,8 +121,12 @@ $connection = mysqli_connect($servername, $username, $password, $dbname) or die(
 						break;
 				   
 			   }
-
+				
 			echo "</td>";
+
+			 echo '<td> <form action="login1.php" method="get">';
+             echo '<button name="purchasingvid" type="submit" value='.$vid.'>Purchase</button> </form> </td>';
+			
                }
                
                echo "</table>";
@@ -129,5 +137,6 @@ $connection = mysqli_connect($servername, $username, $password, $dbname) or die(
                echo "There are no vehicles with this id";
                echo "<h3><a href = 'index.php'>Go back to search for another vehicle id</h3></a>";
                }	
-               }
+              }
+			  
  ?>

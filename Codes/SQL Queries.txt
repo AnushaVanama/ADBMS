@@ -22,5 +22,10 @@ create table CarInformation(vehicle_id bigint NOT NULL,
 							price bigint NOT NULL,
 							yearaddedtoinventory int(4) NOT NULL,
 							type varchar(4) NOT NULL,
-							mileage bigint NOT NULL);
+							mileage bigint NOT NULL,
+							engine varchar(25) NOT NULL,
+							transmission varchar(25) NOT NULL,
+							incentives varchar(25) NOT NULL,
+							downpayment bigint NOT NULL,
+					        primary key(vehicle_id));
 							

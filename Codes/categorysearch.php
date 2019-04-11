@@ -67,16 +67,14 @@ src="..\Images\Logo.png" alt="HTML5 Icon" style="width:auto;height:75px;">
 </div>
 
 </html>
-<?php
 
+<?php
 session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "cardealership";
-
 // Create connection
-
 $connection = mysqli_connect($servername, $username, $password, $dbname) or die("Connection failed");
 	   
                if (isset($_POST['condition']) && isset($_POST['make']) && isset($_POST['model']) && isset($_POST['color']) && isset($_POST['pricerange']))
@@ -145,7 +143,13 @@ $connection = mysqli_connect($servername, $username, $password, $dbname) or die(
 							 "Price: " . $row["price"] . "<br>" . 
 							 "Year added to Inventory: " . $row["yearaddedtoinventory"]. "   ". "<br>" . 
 							 "Type: " . $row["type"] . "<br>" . 
-							 "Mileage: " . $row["mileage"] . "</td>" .
+							 "Mileage: " . $row["mileage"] . "<br>" .
+							 "Engine: " . $row["engine"] . "<br>" . 
+							 "Transmission: " . $row["transmission"] . "<br>" .
+							 "Incentives: " . $row["incentives"] . "<br>" .
+							 "Interest Rate: " . $row["interestrate"] . "<br>" .
+							 "Down Payment: " . $row["downpayment"] . "<br>" .
+							 "</td>" .
 							 "<td>";
 							 switch($row["model"])
 							 {
@@ -162,8 +166,18 @@ $connection = mysqli_connect($servername, $username, $password, $dbname) or die(
 				        echo "<img src=\"..\Images\corolla.jpg\" alt=\"HTML5 Icon\" style=\"width:auto;height:175px;\">" ;
 						break;
 				   }
-
+				   
+				  
 			echo "</td>";
+			
+			echo '<td> <form action="login1.php" method="get">';
+            echo '<button name="purchasingvid" type="submit" value='.$row["vehicle_id"].'>Purchase</button> </form> </td>';
+    
+			
+			echo "</tr>";
+			
+			
+			
                }
                
                echo "</table>";
