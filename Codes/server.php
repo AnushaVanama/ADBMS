@@ -170,7 +170,14 @@ if (isset($_POST['login_user'])) {
   	if (mysqli_num_rows($results) > 0) { 
       $_SESSION['username'] = $username;
   	  $_SESSION['success'] = "You are now logged in";
+	  if($username == "admin")
+	  {
+		header('location: managerview.php');
+	  }
+	  else
+	  {
   	  header('location: loginindex.php');
+	  }
   	}else {
   		array_push($errors, "Wrong username/password combination");
   	}

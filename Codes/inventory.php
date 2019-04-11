@@ -5,7 +5,7 @@
 <head>
 <style>
 table, th, td {
-    border: 0px solid black;
+    border: 1px solid black;
 }
 </style>
 </head>
@@ -61,82 +61,34 @@ src="..\Images\Logo.png" alt="HTML5 Icon" style="width:auto;height:75px;">
 <img src="..\Images\Name.png" alt="HTML5 Icon" style="display:inline-block;width:auto;height:75px;" > 
 </center>
 </div>
+<div class="navbar">
+   <a class="active" href="managerview.php"><i class="fa fa-fw fa-home"></i>Home</a>
 </div>
 <form method="post" action="inventory.php">
-<table>
 <center>
-<td>
-    <div class="row">
-  <div class="col-75">
-    <div class="container">
-      <form action="/action_page.php">
+<table>
+<td><br>
 
-        <div class="row">
-          <div class="col-50">
-            <label for="Make">Make</label><br></br>
-            <input type="text" id="Make" name="Make" ><br></br
-            <label for="model"> Model</label><br></br>
-            <input type="text" id="model" name="model" ><br></br>
-			
-			<label for="year"> Year</label><br></br>
-            <input type="text" id="year" name="year" ><br></br>
-            
-			           <label for="color"> Color</label><br></br>
-            <input type="text" id="color" name="color" ><br></br>
-            <label for="price"> price</label><br></br>
-            <input type="text" id="price" name="price" ><br></br>
-
-            <div class="row">
-              <div class="col-50">
-                <label for="yearaddedtoinventory">Year Added To Inventory</label><br></br>
-                <input type="text" id="yearaddedtoinventory" name="yearaddedtoinventory" ><br></br>
-              </div>
-              <div class="col-50">
-                <label for="type">Type</label><br></br>
-                <input type="text" id="type" name="type" ><br></br>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-50">
-           
-            
-            <label for="mileage">Mileage</label><br></br>
-            <input type="text" id="mileage" name="mileage" ><br></br>
-            <label for="engine">Engine</label><br></br>
-            <input type="text" id="engine" name="engine" ><br></br>
-            <label for="Transmission">Transmission</label><br></br>
-            <input type="text" id="Transmission" name="Transmission" ><br></br>
-
-            <div class="row">
-              <div class="col-50">
-                <label for="Incentives">Incentives</label><br></br>
-                <input type="text" id="Incentives" name="Incentives" ><br></br>
-              </div>
-              <div class="col-50">
-                <label for="interestrate">InterestRate</label><br></br>
-                <input type="text" id="interestrate" name="interestrate" ><br></br>
-              </div>
-			  <div class="col-50">
-                <label for="downpayment">DownPayment</label><br></br>
-                <input type="text" id="downpayment" name="downpayment" >
-              </div>
-            </div>
-          </div>
-
-        </div>
-        
-        <input type="submit" value="Add to inventory" class="btn">
-      </form>
-    </div>
-  </div>  
-
-	</td>
-	</center>
-	</table>
-	
+            Vehicle_id: <input type="text" name="vehicleid"/><br><br>
+            Make: <input type="text" name="make"/><br><br>	
+            Model: <input type="text" name="model"/><br><br>
+            Year: <input type="text" name="year"/><br><br>
+            Color: <input type="text" name="color"/><br><br>
+            Price: <input type="text" name="price"/><br><br>	
+            Year Added To Inventory: <input type="text" name="yearaddedtoinventory"/><br><br>	
+            Type: <input type="text" name="type"/><br><br>	
+            Mileage: <input type="text" name="mileage"/><br><br>	
+            Engine: <input type="text" name="engine"/><br><br>
+            Transmission: <input type="text" name="Transmission"/><br><br>	
+            Incentives: <input type="text" name="Incentives"/><br><br>	
+			DownPayment: <input type="text" name="downpayment"/><br><br>
+            InterestRate: <input type="text" name="interestrate"/><br><br>	  	
+            <center><input type="submit" value="Add to Inventory"><br></center>			
+</td>
+</table>
+		</center>
 	</form>
-</body>
+    </body>
 </html>
 
 <?php
@@ -146,9 +98,27 @@ $username = "root";
 $password = "";
 $dbname = "cardealership";
 // Create connection
-$connection = mysqli_connect($servername, $username, $password, $dbname) or die("Connection failed");
-if ( isset( $_POST['Make'] && isset($_POST['model']) && isset($_POST['year']) && isset($_POST['color']) && isset($_POST['price']) && isset($_POST['yearaddedtoinventory']) && isset($_POST['type']) && isset($_POST['mileage']) && isset($_POST['engine']) && isset($_POST['Transmission']) && isset($_POST['Incentives']) && isset($_POST['interestrate']) && isset($_POST['downpayment']) ) ) {
-	$Make = $_POST['Make'];
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+if (isset($_POST['vehicleid']) &&
+    isset($_POST['make']) && 
+    isset($_POST['model']) && 
+	isset($_POST['year']) && 
+	isset($_POST['color']) && 
+	isset($_POST['price']) && 
+	isset($_POST['yearaddedtoinventory']) && 
+	isset($_POST['type']) && 
+	isset($_POST['mileage']) && 
+	isset($_POST['engine']) && 
+	isset($_POST['Transmission']) && 
+	isset($_POST['Incentives']) && 
+	isset($_POST['downpayment']) && 
+	isset($_POST['interestrate']))
+	{
+	$Vehicle_id = $_POST['vehicleid'];
+	$Make = $_POST['make'];
 	$model = $_POST['model'];
 	$year = $_POST['year'];
 	$color = $_POST['color'];
@@ -158,13 +128,21 @@ if ( isset( $_POST['Make'] && isset($_POST['model']) && isset($_POST['year']) &&
 	$mileage = $_POST['mileage'];
 	$engine = $_POST['engine'];
 	$Transmission = $_POST['Transmission'];
-	$Incentives = $_POST['Incentives'];
-	$interestrate = $_POST['interestrate'];
+	$Incentives = $_POST['Incentives'];	
 	$downpayment = $_POST['downpayment'];
+	$interestrate = $_POST['interestrate'];
 	
+$sql = "INSERT INTO CarInformation(vehicle_id,make,model,year,color,price,yearaddedtoinventory,type,mileage,engine,transmission,incentives,downpayment,interestrate) 
+    VALUES('$Vehicle_id','$Make','$model','$year','$color','$price','$yearaddedtoinventory','$type', '$mileage','$engine','$Transmission', '$Incentives','$downpayment','$interestrate')";
+
+   if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
 }
-$sql = "INSERT INTO carinformation (make,model,year,color,price,yearaddedtoinventory,type,mileage,engine,transmission,incentives,interestrate,downpayment) 
-  			  VALUES('$Make','$model','$year','$color', '$email', '$price','$yearaddedtoinventory','$type', '$mileage','$engine','$Transmission', '$Incentives','$interestrate','$downpayment')";
-               $res = mysqli_query($connection, $sql) or die("Query Failed: $sql");
-echo "<br><h2><center>$Make</center></h2>";
+	}
+	else
+	{
+echo "<br><h2><center>Enter all values</center></h2>";
+	}
 ?>

@@ -27,5 +27,6 @@ create table CarInformation(vehicle_id bigint NOT NULL,
 							transmission varchar(25) NOT NULL,
 							incentives varchar(25) NOT NULL,
 							downpayment bigint NOT NULL,
+							interestrate varchar(25) NOT NULL,
 					        primary key(vehicle_id));
 							
