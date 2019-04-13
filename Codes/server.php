@@ -21,8 +21,6 @@ if (isset($_POST['reg_user'])) {
   $LastName = mysqli_real_escape_string($db, $_POST['LastName']);
   $DOB = mysqli_real_escape_string($db, $_POST['DOB']);
   $SSN = mysqli_real_escape_string($db, $_POST['SSN']);
-  //$Role = mysqli_real_escape_string($db, $_POST['Role']);
-  
   $username = mysqli_real_escape_string($db, $_POST['username']);
   $email = mysqli_real_escape_string($db, $_POST['email']);
   $password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
@@ -40,11 +38,6 @@ if (isset($_POST['reg_user'])) {
   if ($password_1 != $password_2) {
 	array_push($errors, "The two passwords do not match");
   }
-  //if($Role=="Customer");
-  //$q = "SELECT cid/mid FROM signup WHERE username='$username' ";
- // $result1 = mysqli_query($db, $q);
-  
-  //echo("$result1");
   
   // first check the database to make sure 
   // a user does not already exist with the same username and/or email
@@ -63,24 +56,16 @@ if (isset($_POST['reg_user'])) {
   // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
   	$password = md5($password_1);//encrypt the password before saving in the database
-  	$query = "INSERT INTO signup (FirstName, LastName, DOB, SSN, email, Password, Role, username) 
-  			  VALUES('$FirstName','$LastName','$DOB','$SSN', '$email', '$password','$Role','$username')";
+  	$query = "INSERT INTO signup (FirstName, LastName, DOB, SSN, email,Password,username) 
+  			  VALUES('$FirstName','$LastName','$DOB','$SSN', '$email','$password','$username')";
 			  
   	mysqli_query($db, $query);
-	echo "<you are registered successfully please login to proceed!</h5>";
+	$message = "you are registered successfully please login to proceed!";
+    echo "<script type='text/javascript'>alert('$message');</script>";
 	$_SESSION['username'] = $username;
   	$_SESSION['success'] = "You are registered successfully please login";
-	echo("<script>alert('You are registered successfully please login')</script>");
-    //echo("<script>window.location = 'login.php';</script>");
-  header('location: login.php');
-		//echo "<you are registered successfully please login to proceed!</h5>";
-  	
-	//if ($db->query($query) === TRUE) {
-                                 //   echo "<you are registered successfully!</h5>";
-                                 //   echo "<h5><br><A href='login.php'>Return to login.</a></h5>";
-                                //} else {
-                                  //  echo "Error: " . $query . "<br>" . $db->error;
-                               // }
+    header('location: login.php');
+
                             }
   }
  
@@ -133,8 +118,8 @@ if (isset($_POST['reg_user'])) {
   // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
   	$password = md5($password_1);//encrypt the password before saving in the database
-  	$query = "INSERT INTO signup (FirstName, LastName, DOB, SSN, email, Password, Role, username) 
-  			  VALUES('$FirstName','$LastName','$DOB','$SSN', '$email', '$password','$Role','$username')";
+  	$query = "INSERT INTO signup (FirstName, LastName, DOB, SSN, email, Password, username) 
+  			  VALUES('$FirstName','$LastName','$DOB','$SSN', '$email', '$password','$username')";
 			  
   	mysqli_query($db, $query);
 	echo "<you are registered successfully please login to proceed!</h5>";

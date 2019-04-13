@@ -2,16 +2,13 @@
   margin: 0px;
   padding: 0px;
 }
-body {
-  font-size: 120%;
-  background: #F8F8FF;
-}
+
 
 .header {
   width: 30%;
   margin: 50px auto 0px;
   color: white;
-  background: #5F9EA0;
+  background: #216;
   text-align: center;
   border: 1px solid #B0C4DE;
   border-bottom: none;
@@ -46,7 +43,7 @@ form, .content {
   padding: 10px;
   font-size: 15px;
   color: white;
-  background: #5F9EA0;
+  background: #216;
   border: none;
   border-radius: 5px;
 }
@@ -65,4 +62,39 @@ form, .content {
   background: #dff0d8; 
   border: 1px solid #3c763d;
   margin-bottom: 20px;
+}
+body {font-family: Arial, Helvetica, sans-serif;}
+.navbar {
+  width: 100%;
+  background-color: #216;
+  overflow: auto;
+  position: relative;
+ 
+ }
+.navbar a {
+  float: left;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+  text-align: left;
+}
+.navbar a:hover {
+  background-color: #225;
+}
+.active {
+  background-color: #216;
+}
+@media only screen and (max-width: 1044px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+}
+.dealer-logo{
+    text-align: Left;
+	background-color: transparent;
+	text-decoration: none;
+	padding: 1px;
+  
 }

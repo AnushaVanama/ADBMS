@@ -4,8 +4,8 @@ create table signup(FirstName varchar(25) NOT NULL,
 					SSN varchar(20) NOT NULL,
 					email varchar(50) NOT NULL,
 					Password varchar(50) NOT NULL,
-					Role varchar(10) NOT NULL,
-                    username varchar(20) NOT NULL);
+                    username varchar(20) NOT NULL,
+					primary key(username));
 
 					  
 create table CarInformation(vehicle_id bigint NOT NULL,
@@ -28,6 +28,7 @@ create table CarInformation(vehicle_id bigint NOT NULL,
 create table purchase(purchase_id int NOT NULL AUTO_INCREMENT,
                       pricerange bigint NOT NULL,
                       vehicle_id bigint NOT NULL,
+					  username varchar(20) NOT NULL,
 					  purchasedate date NOT NULL,
 					  address varchar(25) NOT NULL,
 					  city varchar(25) NOT NULL,
@@ -41,6 +42,8 @@ create table purchase(purchase_id int NOT NULL AUTO_INCREMENT,
 					  status varchar(50) DEFAULT 'In process',
 					  year int NOT NULL,
 					  primary key(purchase_id),
+					  constraint FK_username
+					  foreign key(username) references signup(username),
 					  constraint FK_Vehicleid
 				      foreign key(vehicle_id) references CarInformation(vehicle_id));
 					  

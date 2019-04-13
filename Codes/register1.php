@@ -29,14 +29,6 @@
   	  <input type="text" name="SSN" value="<?php echo $SSN; ?>">
   	</div>
 	
-	<div class="input-group">
-  	  <label>Role</label>
-  	   <select id = "Role">
-               <option value = "1">Customer</option>
-               <option value = "2">Manager</option>
-			   </select>
-  	</div>
-	
   	<div class="input-group">
   	  <label>Username</label>
   	  <input type="text" name="username" value="<?php echo $username; ?>">

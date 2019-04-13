@@ -78,7 +78,7 @@ src="..\Images\Logo.png" alt="HTML5 Icon" style="width:auto;height:75px;">
 </div>
 <div class="navbar">
    <a style="text-decoration:underline" href="index.php">Log Out</a>
-   <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+   <a href="#"><i class="fa fa-fw fa-envelope"></i>Contact</a>
    <a class="active" href="loginindex.php"><i class="fa fa-fw fa-home"></i>Home</a>
    <a href="#">Welcome <?php  if (isset($_SESSION['username'])) : ?>
     '<?php echo $_SESSION['username']; ?>'

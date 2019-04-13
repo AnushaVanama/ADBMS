@@ -1,0 +1,7 @@
+add form validations for DOB in signup
+add form validations in purchase page 
+(card no 16 digit, exp month, exp year should be greater than current time stamp, cvv encrypt)
+
+current time for purchase date
+Draw ER diagram
+BCNF Relational design

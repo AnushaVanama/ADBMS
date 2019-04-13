@@ -90,6 +90,14 @@ $connection = mysqli_connect($servername, $username, $password, $dbname) or die(
 			   echo "<table>";
                echo "<tr><br><h3><center>Results for make: $make and model: $model</center></h3></tr>";
 			   echo "<tr><td>Total number of vehicles in stock</td><td>$res->num_rows</td></tr>";
+		       $sql2= "select count(vehicle_id) as new from CarInformation where make='$make' and model='$model' and type= 'new';";
+               $result2 =$connection->query($sql2);
+               $new=mysqli_fetch_assoc($result2)["new"];
+               echo "<tr><td>Number of new cars in stock </td><td>$new</td></tr>";
+		       $sql3= "select count(vehicle_id) as used from CarInformation where make='$make' and model='$model' and type= 'used';";
+               $result3 =$connection->query($sql3);
+               $used=mysqli_fetch_assoc($result3)["used"];
+               echo "<tr><td>Number of used cars in stock</td><td>$used</td></tr>";	
 			   echo "</table>";
 			   echo "</center><br>";
 			   echo "<center>";
@@ -132,8 +140,8 @@ $connection = mysqli_connect($servername, $username, $password, $dbname) or die(
 				
 			echo "</td>";
 			echo "</tr>";
-			
              }
+			
                echo "</table>";
 			   echo "</center>";
 			   
