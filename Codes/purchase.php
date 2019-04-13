@@ -1,12 +1,3 @@
-<?php
-session_start();
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "cardealership";
-// Create connection
-$connection = mysqli_connect($servername, $username, $password, $dbname) or die("Connection failed");
-?>
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Load an icon library -->
@@ -16,6 +7,7 @@ $connection = mysqli_connect($servername, $username, $password, $dbname) or die(
 table, th, td {
     border: 0.5px solid #92a8d1;
 	text-align: left;
+	  border-collapse: collapse;
 }
 </style>
 </head>
@@ -84,14 +76,15 @@ src="..\Images\Logo.png" alt="HTML5 Icon" style="width:auto;height:75px;">
     <div class="row">
   <div class="col-75">
     <div class="container">
-      <form action="/action_page.php">
-
         <div class="row">
           <div class="col-50">
-            <label for="purchaseid"> purchaseid</label><br></br>
-            <input type="text" id="purchaseid" name="purchaseid" ><br></br>
-           <label for="vehicleid"> Vehicle Id : <?php echo $_GET['vid']; ?></label><br></br>
-			
+            <label for="price">price</label><br></br>
+            <input type="text" id="price" name="pricerange" ><br></br>
+						
+           <label for="vehicleid"> Vehicle Id </label><br></br>
+		  <input type="text"  name="vehicleid" id="vehicleid"/><br></br>
+		  
+
 			<label for="purchasedate"> purchasedate</label><br></br>
             <input type="date" id="purchasedate" name="purchasedate" ><br></br>
             
@@ -149,33 +142,63 @@ src="..\Images\Logo.png" alt="HTML5 Icon" style="width:auto;height:75px;">
       </form>
     </div>
   </div>
-
-  
-
 	</td>
 	</center>
 	</table>
-	
 	</form>
 </body>
 </html>
-<?php 
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "cardealership";
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-
-/*if (isset($_POST['purchaseid']) && isset($_POST['vehicle_id']) && isset($_POST['address']) && isset($_POST['city']) && isset($_POST['state']) && isset($_POST['zip']) && isset($_POST['cardname']) && isset($_POST['expmonth']) && isset($_POST['CVV']))
+if (isset($_POST['pricerange']) && 
+isset($_POST['vehicleid']) && 
+isset($_POST['purchasedate']) && 
+isset($_POST['address']) &&
+ isset($_POST['city']) &&
+ isset($_POST['state']) &&
+ isset($_POST['zip']) && 
+ isset($_POST['cardname']) && 
+  isset($_POST['cardnumber']) && 
+ isset($_POST['expmonth']) && 
+  isset($_POST['expyear']) && 
+ isset($_POST['cvv']))
                {
-               $purchaseid = $_POST['purchaseid'];
-			   $vehicle_id = $_POST['vehicle_id'];
-			   $address = $_POST['address'];
-			   $price = $_POST['pricerange'];
+			   $pricerange = $_POST['pricerange'];
+			   $vehicleid = $_POST['vehicleid'];
+               $purchasedate = $_POST['purchasedate'];
+			   $address = $_POST['address'];			  
 			   $city = $_POST['city'];
 			   $state = $_POST['state'];
 			   $zip = $_POST['zip'];
 			   $cardname = $_POST['cardname'];
+			   $cardnumber = $_POST['cardnumber'];
 			   $expmonth = $_POST['expmonth'];
-			   $CVV = $_POST['CVV'];
+			   $expyear = $_POST['expyear'];
+			   $cvv = $_POST['cvv'];
 			   
+			   $sql = "INSERT INTO purchase(pricerange,vehicle_id,purchasedate,address,city,state,zip,cardname,cardnumber,expmonth,expyear,cvv) 
+               VALUES('$pricerange','$vehicleid','$purchasedate','$address','$city','$state','$zip','$cardname','$cardnumber','$expmonth','$expyear','$cvv')";
 			   
-			    if (empty($purchaseid)) echo "purchaseid is required";
-				}*/
-				?> 
+
+   if ($conn->query($sql) === TRUE) {
+    echo "Your purchase has been made successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+	}
+	else
+	{
+   echo "<br><h2><center>Enter all values</center></h2>";
+	}
+			  
+	?> 
+

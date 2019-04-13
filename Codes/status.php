@@ -4,10 +4,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <head>
 <style>
-table,td,th {
-    border: 1px solid black;
-	  border-collapse: collapse;
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
 }
+</style>
+</head>
+<style>
 body {font-family: Arial, Helvetica, sans-serif;}
 .navbar {
   width: 100%;
@@ -17,11 +20,12 @@ body {font-family: Arial, Helvetica, sans-serif;}
  
  }
 .navbar a {
-  float: right;
+  float: left;
   padding: 10px;
   color: white;
   text-decoration: none;
   font-size: 17px;
+  text-align: left;
 }
 .navbar a:hover {
   background-color: #225;
@@ -51,7 +55,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
      width: 500px;
 }
 </style>
-</head>
 <body>
 <div class="dealer-logo">
 <center>
@@ -60,10 +63,12 @@ src="..\Images\Logo.png" alt="HTML5 Icon" style="width:auto;height:75px;">
 <img src="..\Images\Name.png" alt="HTML5 Icon" style="display:inline-block;width:auto;height:75px;" > 
 </center>
 </div>
-</div>
 <div class="navbar">
-   <a class="active" href="loginindex.php"><i class="fa fa-fw fa-home"></i>Home</a>
+ <a class="active" href="#">Your Search Results</a>
 </div>
+
+</html>
+
 <?php
 session_start();
 $servername = "localhost";
@@ -73,14 +78,20 @@ $dbname = "cardealership";
 // Create connection
 $connection = mysqli_connect($servername, $username, $password, $dbname) or die("Connection failed");
 	   
-               if (isset($_GET['searchterms']))
+               if (isset($_POST['make']) && isset($_POST['model']))
                {
-               $vid = $_GET['searchterms'];
-               $sql = "select * from CarInformation where vehicle_id='$vid';";
+			   $make = $_POST['make'];
+			   $model = $_POST['model'];
+			   $sql = "select * from CarInformation where make='$make' and model='$model';";
                $res = mysqli_query($connection, $sql) or die("Query Failed: $sql");
                if ($res->num_rows > 0)
                {
-               echo "<br><h2><center>Results for vehicle id: $vid</center></h2>";
+			   echo "<center>";
+			   echo "<table>";
+               echo "<tr><br><h3><center>Results for make: $make and model: $model</center></h3></tr>";
+			   echo "<tr><td>Total number of vehicles in stock</td><td>$res->num_rows</td></tr>";
+			   echo "</table>";
+			   echo "</center><br>";
 			   echo "<center>";
 			   echo "<table>";
                while ($row = mysqli_fetch_assoc($res))
@@ -101,7 +112,6 @@ $connection = mysqli_connect($servername, $username, $password, $dbname) or die(
 							 "Interest Rate: " . $row["interestrate"] . "<br>" .
 							 "Down Payment: " . $row["downpayment"] . "<br>" .
 							 "</td>" .
-							 
 							 "<td>";
 							 switch($row["model"])
 							 {
@@ -121,22 +131,18 @@ $connection = mysqli_connect($servername, $username, $password, $dbname) or die(
 			   }
 				
 			echo "</td>";
-
-			 echo '<td> <form action="login1.php" method="get">';
-             echo '<button name="purchasingvid" type="submit" value='.$vid.'>Purchase</button> </form> </td>';
+			echo "</tr>";
 			
-               }
-               
+             }
                echo "</table>";
 			   echo "</center>";
+			   
                }
                else
                {
                echo "There are no vehicles with this id";
-               echo "<h3><a href = 'index.php'>Go back to search for another vehicle id</h3></a>";
+               echo "<h3><a href = 'managerview.php'>Go back to search for another vehicle id</h3></a>";
                }	
               }
 			  
  ?>
- </body>
-  </html>

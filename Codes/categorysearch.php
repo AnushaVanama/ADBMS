@@ -4,12 +4,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <head>
 <style>
-table, th, td {
+table, td, th {
     border: 1px solid black;
+	  border-collapse: collapse;
 }
-</style>
-</head>
-<style>
 body {font-family: Arial, Helvetica, sans-serif;}
 .navbar {
   width: 100%;
@@ -54,6 +52,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
      width: 500px;
 }
 </style>
+</head>
 <body>
 <div class="dealer-logo">
 <center>
@@ -65,9 +64,6 @@ src="..\Images\Logo.png" alt="HTML5 Icon" style="width:auto;height:75px;">
 <div class="navbar">
  <a class="active" href="#">Your Search Results</a>
 </div>
-
-</html>
-
 <?php
 session_start();
 $servername = "localhost";
@@ -190,3 +186,5 @@ $connection = mysqli_connect($servername, $username, $password, $dbname) or die(
                }	
                }
  ?>
+</body>
+</html>

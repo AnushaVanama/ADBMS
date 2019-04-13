@@ -65,8 +65,8 @@ src="..\Images\Logo.png" alt="HTML5 Icon" style="width:auto;height:75px;">
 <form action="searchbar.php" method="get">
 	<input type="text" name="searchterms" placeholder="Enter your vehicle ID to search" size="35" required>
 	<input type="submit" value="Search">
-</div>	
 </form>
+</div>
 <br>
 <form action="categorysearch.php" method="post">
 	<select name="condition">

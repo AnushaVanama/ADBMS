@@ -77,19 +77,7 @@ src="..\Images\Logo.png" alt="HTML5 Icon" style="width:auto;height:75px;">
 </div>
 <br></br>
 <center>
-<div class="SearchBar">
-<form action="searchbar.php" method="get">
-	<input type="text" name="searchterms" placeholder="Enter your vehicle ID to search" size="35" required>
-	<input type="submit" value="Search">
-</div>	
-</form>
-<br>
-<form action="categorysearch.php" method="post">
-	<select name="condition" required>
-  	<option>New/Used</option>
-  	<option value="new">New</option>
- 	<option value="used">Used</option>
-    </select>
+<form action="status.php" method="post">
 	<select name="make" required>
   	<option>Select Make</option>
   	<option value="honda">Honda</option>
@@ -102,22 +90,7 @@ src="..\Images\Logo.png" alt="HTML5 Icon" style="width:auto;height:75px;">
   	<option value="civic">Honda Civic</option>
 	<option value="accord">Honda Accord</option>
 	</select>
-	<select name="pricerange" required>
-  	<option>Select Price Range</option>
-	<option value="0">Less than 15K</option>
-	<option value="1">15K - 20K</option>
-	<option value="2">20K - 25K</option>
-  	<option value="3">25K - 30K</option>
-	<option value="4">Above 30K</option>
-	</select>
-	<select name="color" required>
-  	<option>Select Color</option>
-	<option value="blue">Blue</option>
-	<option value="red">Red</option>
-  	<option value="white">White</option>
-	</select>
 	<input type="submit" value="Search"><br/>
-	
 	</form>
 </center>
 <br><br>
@@ -127,7 +100,10 @@ src="..\Images\Logo.png" alt="HTML5 Icon" style="width:auto;height:75px;">
 <img src="..\Images\corolla.jpg" alt="HTML5 Icon" style="width:auto;height:125px;">
 <img src="..\Images\civic.jpg" alt="HTML5 Icon" style="width:auto;height:125px;">
 <img src="..\Images\accord.jpg" alt="HTML5 Icon" style="width:auto;height:125px;"> <br>
-<input type="button" value="Add Vehicle to Inventory" onClick=window.open("inventory.php")><br/>
+<input type="button" value="Add Vehicle to Inventory" onClick=window.open("inventory.php")><br/><br>
+<input type="button" value="Process Customer Purchases" onClick=window.open("process.php")><br/><br>
+<input type="button" value="Click to view Store Activities" onClick=window.open("statistics.php")><br/>
+
 </center>
 </div>
 
