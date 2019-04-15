@@ -85,8 +85,10 @@ $sql = "select * from purchase where status ='In process';";
 				   {
 				   echo "<center>";
 			       echo "<table>";
-				   echo "<td>" . "Purchase id: " . $row["purchase_id"] . "<br>";
-				   echo "</td>";
+				   echo "<tr><td>" . "Purchase id: " . $row["purchase_id"] . "</td><td>" . 
+				                     "Vehicle id: " .$row["vehicle_id"]. "</td><td>".
+									 "Customer Name: " .$row["username"]. "</td>";
+				   echo "</tr>";
 				   }
 				   echo "</table>";
 				   echo "</center><br>";

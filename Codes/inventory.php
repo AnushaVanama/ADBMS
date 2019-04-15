@@ -67,7 +67,7 @@ src="..\Images\Logo.png" alt="HTML5 Icon" style="width:auto;height:75px;">
 </div>
 <form method="post" action="inventory.php">
 <center>
-<table>
+<table><br>
 <td><br>
 
             Vehicle_id: <input type="text" name="vehicleid"/><br><br>

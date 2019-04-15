@@ -80,8 +80,8 @@ src="..\Images\Logo.png" alt="HTML5 Icon" style="width:auto;height:75px;">
 		   Customer Name: <input name="username" value=<?php  if (isset($_SESSION['username'])) : ?>
           '<?php echo $_SESSION['username']; ?>'
            <?php endif ?></input><br><br>
-           Purchasedate: <input type="date" id="purchasedate" name="purchasedate" ><br></br>
-			<h3>Provide Billing Address</h3>
+		   Purchasedate:<input type= "date" value="<?php echo date("m/d/Y"); ?>" id="purchasedate" name="purchasedate">
+			<h3>Provide Shipping Address</h3>
             <label for="adr"><i class="fa fa-address-card-o"></i>Address: </label>
             <input type="text" id="adr" name="address" ><br><br>
             <label for="city"><i class="fa fa-institution"></i>City: </label>
@@ -97,10 +97,10 @@ src="..\Images\Logo.png" alt="HTML5 Icon" style="width:auto;height:75px;">
               <i class="fa fa-cc-discover" style="color:orange;"></i>
             </div>
          Name on Card: <input type="text" id="cname" name="cardname" ><br></br>
-   Credit card number: <input type="text" id="ccnum" name="cardnumber" ><br></br>
+   Credit card number: <input type="tel" id="ccnum" name="cardnumber"  maxlength="16"><br></br>
             Exp Month: <input type="text" id="expmonth" name="expmonth" ><br></br>
-             Exp Year: <input type="text" id="expyear" name="expyear" ><br></br>
-               CVV: <input type="text" id="cvv" name="cvv"><br><br>
+             Exp Year: <input type="tel" id="expyear" name="expyear"  maxlength="4"><br></br>
+               CVV: <input type="password" id="cvv" name="cvv" maxlength="4"><br><br>
         <center><input type="submit" value="confirm your payment" class="btn"></center>
 	</td>
     </table>
@@ -118,7 +118,6 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
 if (isset($_POST['pricerange']) && 
 isset($_POST['vehicleid']) && 
 isset($_POST['username']) &&
@@ -147,10 +146,9 @@ isset($_POST['address']) &&
 			   $expyear = $_POST['expyear'];
 			   $cvv = $_POST['cvv'];
 			   
-			   $sql = "INSERT INTO purchase(pricerange,vehicle_id,username,purchasedate,address,city,state,zip,cardname,cardnumber,expmonth,expyear,cvv) 
+			   $sql = "INSERT INTO purchase(payment,vehicle_id,username,purchasedate,address,city,state,zip,cardname,cardnumber,expmonth,expyear,cvv) 
                VALUES('$pricerange','$vehicleid','$username','$purchasedate','$address','$city','$state','$zip','$cardname','$cardnumber','$expmonth','$expyear','$cvv')";
 			   
-
    if ($conn->query($sql) === TRUE) {
     echo "Your purchase has been made successfully";
 } else {
@@ -163,4 +161,3 @@ isset($_POST['address']) &&
 	}
 			  
 	?> 
-
